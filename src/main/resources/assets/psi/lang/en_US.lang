@@ -64,6 +64,13 @@ psi.versioning.downloadingAlready=The update is already downloading, give it som
 psi.versioning.error=Woah! It seems like something went wrong while trying to download the Psi update. Is psi.vazkii.us down?
 psi.versioning.disabled=Sorry. This feature is currently disabled due to server host problems, it should be back soon.
 
+
+# COMMANDS
+psi.area-of-effect.disabled=sorry. Command Dissabled.
+psi.area-of-effect.worked=Command commpleted.
+psi.area-of-effect.failed=Error bad args.
+
+
 # BLOCK NAMES
 tile.psi:cadAssembler.name=CAD Assembler
 tile.psi:programmer.name=Spell Programmer

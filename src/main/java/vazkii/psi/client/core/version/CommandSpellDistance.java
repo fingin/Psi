@@ -21,7 +21,8 @@ import vazkii.psi.api.spell.SpellContext;
 
 public class CommandSpellDistance extends CommandBase {
 
-	private static final boolean ENABLED = true;
+	public boolean ENABLED = true;
+	private boolean a;
 
 	@Override
 	public String getCommandName() {
@@ -33,17 +34,18 @@ public class CommandSpellDistance extends CommandBase {
 		return "/psi-area-of-effect <area-of-effect>";
 	}
 
-	@SuppressWarnings("finally")
 	@Override
 	public void processCommand(ICommandSender var1, String[] var2) {
 		if(ENABLED){
 			try{
+				a = false;
 				SpellContext.MAX_DISTANCE = Double.parseDouble(var2[0].toString());
-				var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.worked").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
-				return;
+				var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.worked").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GREEN)));
+				a = true;
 			}finally{
-				var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.failed").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
-				return;
+				if(a){
+					var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.failed").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+				}
 			}
 		}else{
 			var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.disabled").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));

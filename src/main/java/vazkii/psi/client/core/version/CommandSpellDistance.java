@@ -33,10 +33,18 @@ public class CommandSpellDistance extends CommandBase {
 		return "/psi-area-of-effect <area-of-effect>";
 	}
 
+	@SuppressWarnings("finally")
 	@Override
 	public void processCommand(ICommandSender var1, String[] var2) {
 		if(ENABLED){
-			SpellContext.MAX_DISTANCE = Double.parseDouble(var2[0].toString());
+			try{
+				SpellContext.MAX_DISTANCE = Double.parseDouble(var2[0].toString());
+				var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.worked").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+				return;
+			}finally{
+				var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.failed").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
+				return;
+			}
 		}else{
 			var1.addChatMessage(new ChatComponentTranslation("psi.area-of-effect.disabled").setChatStyle(new ChatStyle().setColor(EnumChatFormatting.RED)));
 		}	
